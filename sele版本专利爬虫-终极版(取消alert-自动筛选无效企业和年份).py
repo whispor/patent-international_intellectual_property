@@ -59,6 +59,8 @@ def log_in(url):
 def data_exist_judge(browser,firm):
     browser.execute_script("clearSearchExp();")
     test_formula = '申请（专利权）人=(%s)'%firm
+    browser.find_element_by_css_selector("#searchExpDisplay").clear()
+    time.sleep(get_random_wait(1, 2, 2))
     browser.find_element_by_css_selector("#searchExpDisplay").send_keys(test_formula)
     time.sleep(get_random_wait(1, 2, 2))
     browser.execute_script("excuteTableSearch();")
@@ -114,6 +116,8 @@ def page_spider(firm,browser,begin_date):
             print(search_formula)
             browser.execute_script("clearSearchExp();")
             # browser.find_element_by_css_selector("a.btn.btn-remove").click()
+            browser.find_element_by_css_selector("#searchExpDisplay").clear()
+            time.sleep(get_random_wait(1, 2, 2))
             browser.find_element_by_css_selector("#searchExpDisplay").send_keys(search_formula)
             time.sleep(get_random_wait(3, 4.5, 2))
             # browser.find_element_by_css_selector("a.btn.btn-search").click()
